@@ -1,0 +1,32 @@
+name: Project Deployment With Github Actions 
+
+# on: [push, workflow_dispatch]
+
+on:
+  - push 
+  - workflow_dispatch
+
+jobs:
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Code Clonning
+        uses: action/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22.14.0'
+      - name: Get Node Version
+        run: node -v
+
+      - name: Setup Pnpm
+        run: npm install -g pnpm 
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project 
+        run: pnpm run build 
