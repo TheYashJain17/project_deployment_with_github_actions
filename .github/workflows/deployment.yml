@@ -22,8 +22,11 @@ jobs:
       - name: Get Node Version
         run: node -v
 
-      - name: Setup Pnpm
-        run: npm install -g pnpm 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          Version: 10
+          run_install: false
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
