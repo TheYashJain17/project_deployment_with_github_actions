@@ -30,7 +30,7 @@ jobs:
       - name: Use Cache Dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm
+          path: ~/.local/share/pnpm/store
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install Dependencies
@@ -55,7 +55,7 @@ jobs:
       - name: Use Cache Dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm
+          path: ~/.local/share/pnpm/store
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
 
 
