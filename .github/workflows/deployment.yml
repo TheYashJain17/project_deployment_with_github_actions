@@ -27,6 +27,11 @@ jobs:
         with:
           Version: 10
           run_install: false
+      - name: Use Cache Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -47,6 +52,13 @@ jobs:
         with:
           version: 10
           run_install: false
+      - name: Use Cache Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Build Project
