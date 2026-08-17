@@ -4,7 +4,7 @@ const page = () => {
   return (
     <div className='flex items-center justify-center min-h-screen text-4xl font-bold'>
 
-      Deploying Project With Github Actions
+      Deploying Project With Github Actions and testing whether the filters applied on push working or not
 
     </div>
     
