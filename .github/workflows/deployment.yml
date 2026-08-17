@@ -3,8 +3,15 @@ name: Project Deployment With Github Actions
 # on: [push, workflow_dispatch]
 
 on:
-  - push 
-  - workflow_dispatch
+  push: 
+    branches: 
+      - main
+    paths-ignore: 
+      - '.github/workflow/*'
+      - 'README.md'
+  workflow_dispatch: 
+
+  # - workflow_dispatch
 
 jobs:
 
@@ -69,3 +76,7 @@ jobs:
 
 
 
+#Notes := 
+#1. here when we are doing caching it is only caching the pnpm store as we are dealing with pnpm so in case of caching its generally does this 
+# if we truly wants to do caching like if we have already installed the dependencies dont do that again , so just simply pass the build folder from 
+# validate job to deploy job and simply deploy from there else we cannot do true caching when dealing with pnpm 
