@@ -15,36 +15,36 @@ on:
 
 jobs:
 
-  validate:
-    runs-on: ubuntu-latest
-    steps:
+  # validate:
+  #   runs-on: ubuntu-latest
+  #   steps:
 
-      - name: Code Clonning
-        uses: actions/checkout@v4
+  #     - name: Code Clonning
+  #       uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v7
-        with:
-          node-version: '22.14.0'
-      - name: Get Node Version
-        run: node -v
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v7
+  #       with:
+  #         node-version: '22.14.0'
+  #     - name: Get Node Version
+  #       run: node -v
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          Version: 10
-          run_install: false
-      - name: Use Cache Dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+  #     - name: Setup pnpm
+  #       uses: pnpm/action-setup@v4
+  #       with:
+  #         Version: 10
+  #         run_install: false
+  #     - name: Use Cache Dependencies
+  #       uses: actions/cache@v4
+  #       with:
+  #         path: ~/.local/share/pnpm/store
+  #         key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+  #     - name: Install Dependencies
+  #       run: pnpm install --frozen-lockfile
 
-      - name: Build Project 
-        run: pnpm run build 
+  #     - name: Build Project 
+  #       run: pnpm run build 
 
 
 
@@ -68,7 +68,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-file
-          path: .next
+          path: ./.next
   
   deploy:
     needs: build
