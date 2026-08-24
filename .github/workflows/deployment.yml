@@ -45,7 +45,7 @@ jobs:
         with:
           name: build-file
           path: .next/**
-          include-hidden-files: true
+          include-hidden-files: true #use this flag when you have put something in .gitignore because github action pipeline strictly follows .gitignore file so we have put .next folder inside the .gitignore , so if we don't use this flag pipeline won't be able to find .next folder and so it won't be able to upload and in result deploy job will fail
   
   deploy:
     needs: build
@@ -59,6 +59,11 @@ jobs:
 
       - name: "Deploy"
         run: echo "Deploying Project"
+      - name: "Install Vercel CLI"
+        run: "pnpm install vercel"
+      - name: "Deploy To vercel"
+        run: "vercel --prod --yes --token=${{secrets.DEPLOYMENT_TOKEN}}"
+      
 
 
 
