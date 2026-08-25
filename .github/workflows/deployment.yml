@@ -7,7 +7,7 @@ on:
     branches: 
       - main
     paths-ignore: 
-      - '.github/workflows/*'
+      # - '.github/workflows/*'
       - 'README.md'
   workflow_dispatch: 
 
@@ -66,6 +66,8 @@ jobs:
           run_install: false
       - name: "Install Vercel CLI"
         run: "pnpm install -g vercel"
+      - name: "Check Vercel Authentication"
+        run: vercel whoami --token=${{secrets.DEPLOYMENT_TOKEN}}
       - name: "Deploy To vercel"
         run: "vercel --prod --yes --token=${{secrets.DEPLOYMENT_TOKEN}}"
       
