@@ -59,6 +59,11 @@ jobs:
 
       - name: "Deploy"
         run: echo "Deploying Project"
+      - name: "Setting Up Pnpm"
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
       - name: "Install Vercel CLI"
         run: "pnpm install vercel"
       - name: "Deploy To vercel"
