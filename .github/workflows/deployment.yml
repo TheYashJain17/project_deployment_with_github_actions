@@ -30,7 +30,7 @@ jobs:
         with:
            args: >
             -Dsonar.projectKey=TheYashJain17_project_deployment_with_github_actions
-            -Dsonar.organization=TheYashJain17
+            -Dsonar.organization=theyashjain17
 
 
   build:
